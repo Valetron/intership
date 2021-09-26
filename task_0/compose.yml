@@ -1,0 +1,11 @@
+version: "3.9"
+services:
+    server:
+        image: nginx
+        ports: 
+            - "8080:80"
+
+    grafana:
+        image: grafana/grafana
+        ports:
+            - "3000:3000"
