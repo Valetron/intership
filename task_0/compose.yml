@@ -1,5 +1,7 @@
 version: "3.9"
+
 services:
+
     server:
         image: nginx
         ports: 
@@ -9,3 +11,15 @@ services:
         image: grafana/grafana
         ports:
             - "3000:3000"
+#        links:
+ #           - "prometheus:9090"    
+
+    prometheus:
+        image: my-prometheus
+        ports:
+            - "9090:9090"
+    
+    node-exporter:
+        image: bitnami/node-exporter
+        ports:
+            - "9100:9100"
