@@ -8,6 +8,10 @@ metrics = PrometheusMetrics(app)
 metrics.info('app_info', 'Application info', version='1.0.3')
 
 @app.route('/')
+def index():
+    return "Hello, world!"
+
+@app.route('/')
 def main():
     pass  # requests tracked by default
 
@@ -36,3 +40,18 @@ def long_running():
                    labels={'status': lambda r: r.status_code, 'path': lambda: request.path})
 def echo_status(status):
     return 'Status: %s' % status, status
+
+if __name__ == "__main__":
+    app.run(host='0.0.0.0')
+
+#@app.route('/simple')
+#def simple_get():
+#    pass
+
+#metrics.register_default
+#(
+#    metrics.counter
+#    (
+#        'by_path_counter', 'Request count by request paths', labels={'path' : lambda : request.path}
+#    )
+#)

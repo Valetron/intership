@@ -6,6 +6,9 @@ services:
         image: nginx
         ports: 
             - "8080:80"
+#            - "app:5000"
+        links:
+            - app
 
     grafana:
         image: grafana/grafana
@@ -15,11 +18,18 @@ services:
  #           - "prometheus:9090"    
 
     prometheus:
-        image: my-prometheus
+        image: prom/prometheus
         ports:
             - "9090:9090"
-    
+        volumes:
+            - ./prometheus.yml:/etc/prometheus/prometheus.yml
+
     node-exporter:
         image: bitnami/node-exporter
         ports:
             - "9100:9100"
+
+    app:
+        image: flask-app:latest
+#        ports:
+#            - "5000:5000"
