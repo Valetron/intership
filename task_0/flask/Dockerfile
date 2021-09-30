@@ -6,7 +6,7 @@ RUN apk update && apk upgrade && \
     pip install prometheus-flask-exporter && \
     mkdir app
 EXPOSE 5000
-COPY flask_exporter.py ./app
+COPY app.py ./app
 WORKDIR /app
-CMD ["python3", "flask_exporter.py"]
+CMD ["python3", "app.py"]
 #ENTRYPOINT ["python3", "flask_exporter.py"]
