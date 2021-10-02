@@ -6,7 +6,7 @@ metrics = PrometheusMetrics(app)
 
 @app.route('/')
 def main():
-    return "Hello, world"
+    return "Hello from Flask"
 
 @app.route('/simple')
 def simple_get():
